@@ -8,6 +8,11 @@ def index():
     return render_template("index.html")
 
 
-@app.route("/greet")
+@app.route("/greetwithoutpost")
+def greetwithoutpost():
+    return render_template("greet.html", name=request.get.get("first_name", "Patil"))
+
+
+@app.route("/greet", methods=["POST"])
 def greet():
-    return render_template("greet.html", name=request.args.get("first_name", "Patil"))
+    return render_template("greet.html", name=request.form.get("first_name", "Patil"))
